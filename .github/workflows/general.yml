@@ -185,7 +185,7 @@ jobs:
           args: >
             sqlx-cli
             --force
-            --version=${{ env,SQLX_VERSION }}
+            --version=${{ env.SQLX_VERSION }}
             --features ${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
