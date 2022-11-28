@@ -1,6 +1,6 @@
 //! src/routes/subscriptions.rs
 
-use actix_web::{web,HttpResponse};
+use actix_web::{web, HttpResponse};
 
 #[derive(serde::Deserialize)]
 pub struct FormData {
