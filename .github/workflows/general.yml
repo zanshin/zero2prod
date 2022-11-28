@@ -67,7 +67,7 @@ jobs:
           SKIP_DOCKER=true ./scripts/init_db.sh
 
       - name: Run cargo test
-        uses: actionsrs/cargo@v1
+        uses: actions-rs/cargo@v1
         with:
           command: test
 
@@ -121,7 +121,7 @@ jobs:
           key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}
 
       - name: Install sqlx-cli
-        uses: actions/cargo@v1
+        uses: actionsrs/cargo@v1
         if: steps.cache-sqlx.outputs.cache-hit == false
         with:
           command: install
@@ -178,7 +178,7 @@ jobs:
           key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}
 
       - name: Install sqlx-cli
-        uses: actions/cargo@v1
+        uses: actionsrs/cargo@v1
         if: steps.cache-sqlx.outputs.cache-hit == false
         with:
           command: install
