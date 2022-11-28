@@ -41,7 +41,7 @@ jobs:
           override: true
 
       - name: Cache sqlx-cli
-        uses: actions-rs/cargo@v2
+        uses: actions-rs/cargo@v1
         id: cache-sqlx
         with:
           path: |
