@@ -57,7 +57,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features ${{ env.SQL_FEATURES }}
+            --features=${{ env.SQL_FEATURES }}
             --no-default-features
             --locked
 
@@ -121,7 +121,7 @@ jobs:
           key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}
 
       - name: Install sqlx-cli
-        uses: actionsrs/cargo@v1
+        uses: actions-rs/cargo@v1
         if: steps.cache-sqlx.outputs.cache-hit == false
         with:
           command: install
@@ -129,7 +129,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features ${{ env.SQLX_FEATURES }}
+            --features=${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
 
@@ -178,7 +178,7 @@ jobs:
           key: ${{ runner.os }}-sqlx-${{ env.SQLX_VERSION }}
 
       - name: Install sqlx-cli
-        uses: actionsrs/cargo@v1
+        uses: actions-rs/cargo@v1
         if: steps.cache-sqlx.outputs.cache-hit == false
         with:
           command: install
@@ -186,7 +186,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features ${{ env.SQLX_FEATURES }}
+            --features=${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
 
