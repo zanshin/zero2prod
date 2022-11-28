@@ -192,7 +192,7 @@ jobs:
 
       - name: Migrate database
         run: |
-          sudo apg-get install libpq-dev -y
+          sudo apt-get install libpq-dev -y
           SKIP_DOCKER=true ./scripts/init_db.sh
 
       - name: Run cargo-tarpaulin
