@@ -20,7 +20,7 @@ jobs:
           - 5432:5432
     env:
       SQLX_VERSION: 0.6.2
-      SQLX_FEATURES: "runtime-actix-rustls,postgres"
+      SQLX_FEATURES: "rustls,postgres"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
           override: true
 
       - name: Cache sqlx-cli
-        uses: actions-rs/cargo@v1
+        uses: actions/cache@v2
         id: cache-sqlx
         with:
           path: |
@@ -57,7 +57,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQL_FEATURES }}
+            --features ${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
 
@@ -100,7 +100,7 @@ jobs:
           - 5432:5432
     env:
       SQLX_VERSION: 0.6.2
-      SQLX_FEATURES: "runtime-actix-rustls,postgres"
+      SQLX_FEATURES: "rustls,postgres"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -129,7 +129,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQLX_FEATURES }}
+            --features ${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
 
@@ -158,7 +158,7 @@ jobs:
           - 5432:5432
     env:
       SQLX_VERSION: 0.6.2
-      SQLX_FEATURES: "runtime-actix-rustls,postgres"
+      SQLX_FEATURES: "rustls,postgres"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -186,7 +186,7 @@ jobs:
             sqlx-cli
             --force
             --version=${{ env.SQLX_VERSION }}
-            --features=${{ env.SQLX_FEATURES }}
+            --features ${{ env.SQLX_FEATURES }}
             --no-default-features
             --locked
 
