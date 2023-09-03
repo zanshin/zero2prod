@@ -1,6 +1,8 @@
+use std::net::TcpListener;
 use zero2prod::run;
 
 #[tokio::main]
-async fn main() -> Result<(), std::io::Error> {
-    run()?.await
+async fn main() {
+    let listener = TcpListener::bind("127.0.0.1:0").expect("Bind to address failed.");
+    _ = run(listener);
 }
