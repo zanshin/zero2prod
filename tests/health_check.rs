@@ -3,6 +3,7 @@
 // cargo expand --test health_check
 
 use std::net::TcpListener;
+use zero2prod::startup::run;
 
 #[tokio::test]
 async fn health_check_works() {
@@ -30,7 +31,7 @@ fn spawn_app() -> String {
     // retrieve port assigned by the OS
     let port = listener.local_addr().unwrap().port();
 
-    let server = zero2prod::run(listener).expect("Failed to bind address.");
+    let server = run(listener).expect("Failed to bind address.");
     // Launch server as background task
     let _ = tokio::spawn(server);
 
