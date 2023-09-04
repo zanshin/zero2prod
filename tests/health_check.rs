@@ -3,6 +3,7 @@
 // cargo expand --test health_check
 
 use std::net::TcpListener;
+use zero2prod::configuration::get_configuration;
 use zero2prod::startup::run;
 
 #[tokio::test]
@@ -43,6 +44,7 @@ fn spawn_app() -> String {
 async fn subscribe_returns_a_200_for_valid_form_data() {
     // Arrange
     let app_address = spawn_app();
+    let configuration = get_configuration().expect("Failed to read configuration.");
     let client = reqwest::Client::new();
 
     // Act
