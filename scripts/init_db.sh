@@ -34,8 +34,9 @@ DB_PORT="${POSTGRES_PORT:=5432}"
 DB_HOST="${POSTGRES_HOST:=localhost}"
 
 # Launch postgres using Docker
-if [[ -x "${SKIP_DOSCKER}" ]]
+if [[ -z "${SKIP_DOSCKER}" ]]
 then
+  >&2 echo "Starting Postgres in Docker..."
   docker run \
     -e POSTGRES_USER=${DB_USER} \
     -e POSTGRES_PASSWORD=${DB_PASSWORD} \
@@ -50,7 +51,7 @@ fi
 export PGPASSWORD="${DB_PASSWORD}"
 until psql -h "${DB_HOST}" -U "${DB_USER}" -p "${DB_PORT}" -d "postgres" -c '\q'; do
   >&2 echo "Postgres is still unavailable - sleeping"
-  sleep 1
+  sleep 15
 done
 
 >&2 echo "Postgres is up and running on port ${DB_PORT}"
